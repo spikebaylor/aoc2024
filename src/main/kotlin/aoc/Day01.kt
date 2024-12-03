@@ -4,10 +4,10 @@ import kotlin.math.abs
 
 
 fun main() {
-    day_01().run()
+    Day01().run()
 }
 
-class day_01 {
+class Day01 {
 
     fun run() {
         val inputFilename = "day_01.txt"

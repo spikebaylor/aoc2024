@@ -3,10 +3,10 @@ package aoc
 import kotlin.math.abs
 
 fun main() {
-    day_02().run()
+    Day02().run()
 }
 
-class day_02 {
+class Day02 {
 
     fun run() {
         val inputFilename = "day_02.txt"
@@ -138,8 +138,8 @@ class day_02 {
     private fun readInput(file: String): List<List<Int>> {
         val reports = mutableListOf<List<Int>>()
 
-        getFileFromResource(file).forEachLine {
-            val report = it.split(" ").map { it.toInt() }
+        getFileFromResource(file).forEachLine { line ->
+            val report = line.split(" ").map { it.toInt() }
             reports.add(report)
         }
         return reports
