@@ -16,13 +16,15 @@ abstract class Base<T> {
     abstract fun readInput(filename: String): T
 
     fun run() {
-        val input = readInput(filename)
+        var input = readInput(filename)
 
         var start = System.currentTimeMillis()
         val part1 = part1(input)
         var stop = System.currentTimeMillis()
         val part1Time = stop - start
 
+        // re-reading just in case one of the part1s needs/wants/accidentally changes the input
+        input = readInput(filename)
         start = System.currentTimeMillis()
         val part2 = part2(input)
         stop = System.currentTimeMillis()
