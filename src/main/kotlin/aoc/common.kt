@@ -6,13 +6,13 @@ fun Any.getFileFromResource(file: String): File {
     return File(this::class.java.classLoader.getResource(file)!!.toURI())
 }
 
-abstract class Base<T> {
+abstract class Base<T, R> {
     abstract val filename: String
-    abstract val part1Result: Int
-    abstract val part2Result: Int
+    abstract val part1Result: R
+    abstract val part2Result: R
 
-    abstract fun part1(input: T): Int
-    abstract fun part2(input: T): Int
+    abstract fun part1(input: T): R
+    abstract fun part2(input: T): R
     abstract fun readInput(filename: String): T
 
     fun run() {
@@ -36,3 +36,6 @@ abstract class Base<T> {
     }
 
 }
+
+fun Int.isEven() = this % 2 == 0
+fun Int.isOdd() = this % 2 == 1

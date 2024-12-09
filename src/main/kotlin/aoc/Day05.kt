@@ -8,7 +8,7 @@ data class Rule(val before: Int, val after: Int)
 typealias Update = List<Int>
 data class Day05Input(val ruleSet: List<Rule>, val updateSet: List<Update>)
 
-class Day05 : Base<Day05Input>() {
+class Day05 : Base<Day05Input, Int>() {
     override val filename = "day_05.txt"
     override val part1Result = 7307
     override val part2Result = 4713

@@ -4,7 +4,7 @@ fun main() {
     Day04().run()
 }
 
-class Day04 : Base<List<String>>() {
+class Day04 : Base<List<String>, Int>() {
     override val filename: String = "day_04.txt"
     override val part1Result: Int = 2504
     override val part2Result: Int = 1923
