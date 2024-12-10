@@ -37,5 +37,52 @@ abstract class Base<T, R> {
 
 }
 
+abstract class NewBase<T>(
+    val filename: String,
+    val part1Result: Long = -1,
+    val part2Result: Long = -1
+) {
+
+    abstract fun part1(input: T): Long
+    abstract fun part2(input: T): Long
+    abstract fun readInput(filename: String): T
+
+    fun run() {
+        var input = readInput(filename)
+
+        var start = System.currentTimeMillis()
+        val part1 = part1(input)
+        var stop = System.currentTimeMillis()
+        val part1Time = stop - start
+
+        // re-reading just in case one of the part1s needs/wants/accidentally changes the input
+        input = readInput(filename)
+        start = System.currentTimeMillis()
+        val part2 = part2(input)
+        stop = System.currentTimeMillis()
+        val part2Time = stop - start
+        println("Part 1: $part1  [$part1Time ms]")
+        println("Part 2: $part2  [$part2Time ms]")
+        if(part1Result != part1) { println("ERROR Part1 result: $part1 does not match expected result $part1Result") }
+        if(part2Result != part2) { println("ERROR Part2 result: $part2 does not match expected result $part2Result") }
+    }
+}
+
+abstract class StringBase(
+    filename: String,
+    part1Result: Long = -1,
+    part2Result: Long = -1
+) : NewBase<String>(filename, part1Result, part2Result) {
+    override fun readInput(filename: String) = getFileFromResource(filename).readText()
+}
+
+abstract class LinesBase(
+    filename: String,
+    part1Result: Long = -1,
+    part2Result: Long = -1
+) : NewBase<List<String>>(filename, part1Result, part2Result) {
+    override fun readInput(filename: String) = getFileFromResource(filename).readLines()
+}
+
 fun Int.isEven() = this % 2 == 0
 fun Int.isOdd() = this % 2 == 1

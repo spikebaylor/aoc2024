@@ -12,11 +12,12 @@ class Day09 : Base<String, Long>() {
 
     override fun part1(input: String): Long {
         val diskMap = processDiskMap(input)
-        val defrag = defragPart1(diskMap)
+        val defrag = compressFiles(diskMap)
         return checksum(defrag)
     }
 
     override fun part2(input: String): Long {
+        // Not too different, except need to find how long the orig file is, and when searching for index need to find contiguous blank area.
         return 0
     }
 
@@ -38,7 +39,7 @@ class Day09 : Base<String, Long>() {
         return list.toList()
     }
 
-    private fun defragPart1(diskmap: List<Int>): List<Int> {
+    private fun compressFiles(diskmap: List<Int>): List<Int> {
         val defrag = diskmap.toMutableList()
         var lastEmptyIndex = -1
 
